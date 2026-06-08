@@ -1,15 +1,249 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ja">
-<meta charset="utf-8">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>102 Processing</title>
+
 <style>
-body{text-align:center;font-family:sans-serif;margin:0}
-h1{background:#333;color:white;margin:0;padding:1em}
-.dummy{font-size:128px}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    font-family:sans-serif;
+
+    background:linear-gradient(
+        180deg,
+        #9fe4ff 0%,
+        #6fcfff 45%,
+        #3caeff 100%
+    );
+}
+
+.pool{
+    position:absolute;
+    inset:0;
+
+    background:
+    repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,.2) 0px,
+        rgba(255,255,255,.2) 2px,
+        transparent 2px,
+        transparent 60px
+    ),
+
+    repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,.2) 0px,
+        rgba(255,255,255,.2) 2px,
+        transparent 2px,
+        transparent 60px
+    );
+}
+
+.water{
+    position:absolute;
+    inset:0;
+
+    background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.4), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(255,255,255,.3), transparent 40%);
+
+    animation:wave 5s ease-in-out infinite;
+}
+
+@keyframes wave{
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+.code{
+    position:absolute;
+    top:38%;
+    left:50%;
+    transform:translate(-50%,-50%);
+
+    font-size:220px;
+    font-weight:bold;
+
+    color:white;
+
+    text-shadow:
+        0 0 20px rgba(255,255,255,.6),
+        0 0 40px rgba(0,0,0,.15);
+
+    z-index:10;
+}
+
+.message{
+    position:absolute;
+    top:56%;
+    left:50%;
+    transform:translateX(-50%);
+
+    text-align:center;
+    color:white;
+
+    z-index:10;
+}
+
+.message h2{
+    font-size:46px;
+    margin-bottom:12px;
+}
+
+.message p{
+    font-size:22px;
+    line-height:1.6;
+}
+
+/* 泳ぐアヒル */
+
+.duck{
+    position:absolute;
+    font-size:80px;
+
+    animation:swim 6s ease-in-out infinite;
+}
+
+@keyframes swim{
+
+    0%{
+        transform:translateX(0px);
+    }
+
+    25%{
+        transform:translateX(20px)
+                  translateY(-10px);
+    }
+
+    50%{
+        transform:translateX(40px);
+    }
+
+    75%{
+        transform:translateX(20px)
+                  translateY(10px);
+    }
+
+    100%{
+        transform:translateX(0px);
+    }
+}
+
+.d1{
+    top:12%;
+    left:10%;
+}
+
+.d2{
+    top:18%;
+    right:12%;
+    animation-delay:1s;
+}
+
+.d3{
+    top:42%;
+    left:8%;
+    animation-delay:2s;
+}
+
+.d4{
+    top:35%;
+    right:8%;
+    animation-delay:.5s;
+}
+
+.d5{
+    bottom:15%;
+    left:15%;
+    animation-delay:1.5s;
+}
+
+.d6{
+    bottom:10%;
+    right:18%;
+    animation-delay:2.5s;
+}
+
+.d7{
+    top:60%;
+    left:70%;
+    animation-delay:3s;
+}
+
+.d8{
+    top:22%;
+    left:45%;
+    animation-delay:1.2s;
+}
+
+/* ローディング風泡 */
+
+.bubble{
+    position:absolute;
+    color:white;
+    opacity:.7;
+    animation:bubble 4s linear infinite;
+}
+
+@keyframes bubble{
+
+    from{
+        transform:translateY(0);
+        opacity:.7;
+    }
+
+    to{
+        transform:translateY(-120px);
+        opacity:0;
+    }
+}
+
+.b1{left:20%; bottom:10%; font-size:20px;}
+.b2{left:35%; bottom:5%; font-size:30px; animation-delay:1s;}
+.b3{left:60%; bottom:8%; font-size:25px; animation-delay:2s;}
+.b4{left:80%; bottom:12%; font-size:18px; animation-delay:3s;}
 </style>
+
+</head>
+
 <body>
-<h1>102 Processing</h1>
-<div class="dummy">🛠️</div>
-<p>いま処理中や。ちょっと待っとき。</p>
+
+<div class="pool"></div>
+<div class="water"></div>
+
+<div class="duck d1">🦆</div>
+<div class="duck d2">🦆</div>
+<div class="duck d3">🐥</div>
+<div class="duck d4">🦆</div>
+<div class="duck d5">🐥</div>
+<div class="duck d6">🦆</div>
+<div class="duck d7">🦆</div>
+<div class="duck d8">🐥</div>
+
+<div class="bubble b1">○</div>
+<div class="bubble b2">○</div>
+<div class="bubble b3">○</div>
+<div class="bubble b4">○</div>
+
+<div class="code">102</div>
+
+<div class="message">
+    <h2>Swimming in Progress...</h2>
+    <p>
+        リクエストを処理しています。<br>
+        アヒルたちが一生懸命泳いでいます！
+    </p>
+</div>
+
 </body>
 </html>
